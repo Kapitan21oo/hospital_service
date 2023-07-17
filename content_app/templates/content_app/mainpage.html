@@ -1,0 +1,29 @@
+
+{% load static %}
+
+<html>
+<head>
+    <title>Список докторов</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'content_app/css/styles.css' %}">
+
+</head>
+<body>
+
+
+{% block content %}
+{{request.user.username}}
+<h1>Список докторов</h1>
+<div class="doctor-list">
+    {% for i in profile_doctor %}
+    <div class="doctor-item">
+        <p>{{ i.first_name }} {{ i.last_name }}</p>
+        <p>Специализация: {{ i.specializations }}</p>
+        <p>Опыт: {{ i.exp }}</p>
+        <p><a href="{% url 'appointment' doctor_id=i.id%}">Запись</a></p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+</body>
+</html>

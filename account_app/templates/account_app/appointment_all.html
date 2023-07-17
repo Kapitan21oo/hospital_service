@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Все записи</h2>
+
+    {% for appointment in get_all_appointment %}
+<div>
+    <div>
+
+        <p>Логин доктора: {{appointment.user_doctor.username}}</p>
+        <p>Имя доктора: {{appointment.user_doctor.first_name}}</p>
+        <p>Фамилия доктора: {{appointment.user_doctor.last_name}}</p>
+
+        .........................................................
+
+        <p>Логин пациента: {{ appointment.user_patient.username }}</p>
+        <p>Имя пациента: {{ appointment.user_patient.first_name }}</p>
+        <p>Фамилия доктора: {{ appointment.user_patient.last_name }}</p>
+        <p>Обращение: {{ appointment.message }}</p>
+        <p>Желаемая запись: {{ appointment.time_reception }} / {{appointment.time_list}}</p>
+        <form method="post" action="{% url 'click_bool' pk=appointment.pk %}">
+            {% csrf_token %}
+            <button type="submit"> Записать на прием </button>
+        </form>
+        <p>Запись: {{ appointment.click_bool }}</p>
+        <p>////////////////////</p>
+    </div>
+</div>
+    {% endfor %}
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'account_app/css/styles.css' %}">
+</head>
+
+<body>
+
+{% for i in doctor_profile %}
+
+<div class="profile-container">
+    <div class="profile">
+        <h2>Профиль</h2>
+        <p>Имя: {{ i.user.first_name }}</p>
+        <p>Фамилия: {{ i.user.last_name }}</p>
+        <p>Опыт: {{ i.user.exp }}</p>
+        <p><a href="{% url 'appointment' username=i.user.username%}">Ваши записи</a></p>
+    </div>
+</div>
+{% endfor %}
+
+</body>
+</html>

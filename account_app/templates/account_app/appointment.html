@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+
+
+
+<h2>Записи к вам</h2>
+
+
+    {% for appointment in get_appointment %}
+        {% if appointment.click_bool == True %}
+
+
+        <p>Имя: {{ appointment.user_patient.first_name }}</p>
+        <p>Фамилия: {{ appointment.user_patient.last_name }}</p>
+        <p>Обращение: {{ appointment.message }}</p>
+        <p>Дата и время: {{ appointment.time_reception }}</p>
+
+        {% endif %}
+
+    {% endfor %}
+
+
+</div>
+
+</body>
+</html>
